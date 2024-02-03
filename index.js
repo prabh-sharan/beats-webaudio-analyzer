@@ -11,7 +11,7 @@ input.addEventListener("change", ()=> {
     const file = input.files[0];
     // console.log(file);
     if(!file) return;
-
+    
     audioElem.src = URL.createObjectURL(file); //create file url
     audioElem.play(); // play sound
     
@@ -59,7 +59,10 @@ input.addEventListener("change", ()=> {
             const barHeight = dataValue;
 
             // now using canvas to create sound bars
-            context.fillStyle ="red";
+            const red = (barHeight * 2) % 150;
+            const green = (barHeight * 5) % 200;
+            const blue = (barHeight * 7) % 120;
+            context.fillStyle = `rgb(${red}, ${green}, ${blue})`;
             context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
             x += barWidth;
             
