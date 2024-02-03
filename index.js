@@ -11,6 +11,7 @@ input.addEventListener("change", ()=> {
     const file = input.files[0];
     // console.log(file);
     if(!file) return;
+
     audioElem.src = URL.createObjectURL(file); //create file url
     audioElem.play(); // play sound
     
@@ -35,7 +36,8 @@ input.addEventListener("change", ()=> {
     // fftSize- prop of analyzerNode -window size of samples- 2^5 to ^15
     analyser.fftSize = 512;
 
-    const bufferDataLength = analyser.frequencyBinCount; //total data pts available, half of fftSize
+    //total data pts available or no. of sound bars we have to create, half of fftSize
+    const bufferDataLength = analyser.frequencyBinCount;
 
     const dataArr = new Uint8Array(bufferDataLength); //create unsigned 8 bit unt array, 8 bits= 1 byte
 
@@ -44,11 +46,27 @@ input.addEventListener("change", ()=> {
     //     console.log(dataArr);
     // },2000)
     
+ 
+    const barWidth = canvas.width / bufferDataLength; //each sound bar width
+    let x = 0;
     function createSoundBars(){
-        analyser.getByteFrequencyData(dataArr); // get frew data from samples
+        x = 0;
+        context.clearRect(0, 0, canvas.widthth, canvas.height);
 
-        bufferDataArr.forEach(dataValue =>{
+        analyser.getByteFrequencyData(dataArr); // get freq data from samples
 
+        dataArr.forEach(dataValue =>{
+            const barHeight = dataValue;
+
+            // now using canvas to create sound bars
+            context.fillStyle ="red";
+            context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+            x += barWidth;
+            
         })
+        //recursive call-back until audio not ended
+        if(!audioElem.ended) requestAnimationFrame(createSoundBars); 
     }
+
+    createSoundBars();
 })
