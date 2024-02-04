@@ -3,26 +3,40 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: #edede9;
+    font-family: 'Roboto', sans-serif;
+}
 
-.inputContainer {
-    height: 3rem;
-    width: 10rem;
-    border-radius: 2rem;
-    position: absolute;
-    top: 3rem;
-    left: calc((100% - 10rem) / 2);
-    background-color: #4d39d1;
-    color: white;
+.header{
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
+    width:60%;
+    height: 10vh;
+    margin-top: 1em;
+
 }
 
 input {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    display: none;
+}
+
+h1{
+    color:#e63946
+}
+
+label{
+    background-color: #e63946;
+    color: white;
+    border-radius: 25px;
+    padding: 15px 12px;
+    cursor: pointer;
+}
+
+.container{
+    height:80vh;
+    width:70%;
+    /* border-bottom: 2px solid #e63946; */
+    margin-left: 1em;
 }
