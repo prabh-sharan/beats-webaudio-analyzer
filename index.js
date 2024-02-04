@@ -1,11 +1,12 @@
 const input = document.querySelector("input");
 const audioElem = document.querySelector("audio");
 const canvas = document.querySelector("canvas");
-
+const container = document.querySelector(".container");
 const context = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = container.clientWidth;
+canvas.height = container.clientHeight;
+
 
 input.addEventListener("change", ()=> {
     const file = input.files[0];
@@ -41,17 +42,11 @@ input.addEventListener("change", ()=> {
 
     const dataArr = new Uint8Array(bufferDataLength); //create unsigned 8 bit unt array, 8 bits= 1 byte
 
-    // setInterval(function(){
-    //     analyser.getByteFrequencyData(dataArr);
-    //     console.log(dataArr);
-    // },2000)
-    
- 
     const barWidth = canvas.width / bufferDataLength; //each sound bar width
     let x = 0;
     function createSoundBars(){
         x = 0;
-        context.clearRect(0, 0, canvas.widthth, canvas.height);
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
         analyser.getByteFrequencyData(dataArr); // get freq data from samples
 
