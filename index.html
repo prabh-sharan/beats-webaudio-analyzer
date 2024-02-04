@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Beats-audio analyzer</title>
+    <link rel="icon" href="data:;base64,=">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
         <div class="header">
             <h1>Beats - WebAudio Analyzer</h1>
-            <div class="inputContainer">
-                <p>Upload Audio</p>
-                <input type="file" accept="audio/*">
-            </div>
+            <label for="file-uplaod">
+                <input id="file-uplaod" type="file" accept="audio/*">
+                Upload Audio
+            </label>
         </div>    
         <div class="container">
             <audio></audio>
             <canvas></canvas>
         </div>
-    
         <script src="./index.js"></script>
 </body>
 </html>
