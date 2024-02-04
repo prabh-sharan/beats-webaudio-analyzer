@@ -8,13 +8,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-        <div class="inputContainer">
-            Upload Audio
-            <input type="file" accept="audio/*">
+        <div class="header">
+            <h1>Beats - WebAudio Analyzer</h1>
+            <div class="inputContainer">
+                <p>Upload Audio</p>
+                <input type="file" accept="audio/*">
+            </div>
+        </div>    
+        <div class="container">
+            <audio></audio>
+            <canvas></canvas>
         </div>
-           <audio></audio>
-           <canvas></canvas>
     
-    <script src="./index.js"></script>
+        <script src="./index.js"></script>
 </body>
 </html>
